@@ -1,0 +1,40 @@
+COMPONENTS
+==========
+1. A component is a Javascript function
+2. The function must return "something"
+3. That "something" is JSX
+4. The component may have data private to itself. This is called "State."
+5. The component may share data with other, child components. These are called "props"
+
+HOOKS
+=====
+1. Composability: functions can have other functions inside them
+2. Side effects change State
+3. Stateful components manage state
+4. In React a Component should be a pure function: same output for same input. 
+5. So in React a Component should be stateless
+6. Side effect forces a function not to return the same output for the same input.
+7. But stateful logic can go into a function within the component. This is called a Hook.
+8. Hooks can be stateful and manage side effects.
+9. Major Hooks: 
+  useState
+  useEffect
+  useContext
+  useRef
+  useMemo
+  useCallback
+  useReducer
+  useLayoutEffect
+10. Hooks hook into React's LifeCycle
+  when it mounts
+  when state changes
+  when props change
+  when context or store change
+  when it unmounts
+
+useState
+--------
+const [state, setState] = useState(initialValue)
+
+1. If don't pass an initial value, it will be undefined
+2. setState allows you to seem to change state without actually changing it. You don't want to change the state, because then you won't have anything to compare to durring the diffing algorhythm, which only changes those parts of the virtual DOM which have been changed. 
