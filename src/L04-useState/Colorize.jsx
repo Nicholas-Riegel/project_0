@@ -10,7 +10,7 @@ function Colorize() {
 
   return (
     <div className='colorizer'>
-      <div className="box" style={{ backgroundColor: color, }}>{color}</div>
+      <div className="box" style={{ backgroundColor: color }}>{color}</div>
       <button onClick={() => setColor(getRandomColor)}>Change Color</button>
     </div>
   )

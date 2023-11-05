@@ -38,3 +38,81 @@ const [state, setState] = useState(initialValue)
 
 1. If don't pass an initial value, it will be undefined
 2. setState allows you to seem to change state without actually changing it. You don't want to change the state, because then you won't have anything to compare to durring the diffing algorhythm, which only changes those parts of the virtual DOM which have been changed. 
+
+
+useEffect
+---------
+
+0. Pure function: only does one thing. same output for same input. console.log is a side effect
+1. anything that is not directly related to the output of a component
+3. other examples: Dom manipulation, making async api call, writing to storage, IO operations, 
+
+How to use
+0. useEffect runs on every render!
+1. takes two parameters: a function and an array of dependencies. if you don't include the array the side effect will run on every render of the component
+useEffect(()=>{})
+2. if you only want to run it on first mount, use empty array
+useEffect(()=>{}, [])
+3. Run only when state changes
+useEffect(()=>{}, [state])
+4. Run after props change
+useEffect(()=>{}, [props])
+5. when either state or props change
+useEffect(()=>{}, [state, props])
+6. So something when component unmounts or after every render and before the next render  
+useEffect(()=>{
+  // do something
+  return () => {
+    // do something on unmount
+  }
+}, [state, props])
+
+CustomHooks
+-----------
+
+useRef
+--------
+useRef is a built in hook that helps persist values between renders, but doesn't re-render the component
+
+returns a reference which is a plain js object with a special properly called current
+
+const ref = useRef(0)
+cosnt ref = {current: 0}
+ref.current is 0
+update the reference values doesn't cause a re-render of the component
+
+reference values is persisted between renders
+
+with useState, if the value of the state changes it causes a re-rendering of the component
+
+Higher Order Component
+---------------------
+The higher order component takes the "wrapped" component as an input, and returns the "enhanced" component
+
+const enhancedComponent = HOC(wrapped)
+
+
+DOM
+--------
+DOM is a Javascript api!
+
+Memoization
+-----------
+Caching things that are already known
+memoized value is called memo
+caching results of expensive functions and returning it for the same inputs
+
+When a parent node of the virtual dom gets updated, the children have to rerender too
+But what if one of the children is really expensive to update, and you dont want to rerender it everyt time the parent updates?
+
+There is a higher order component called 'memo' in react
+React.memo(Child)
+this will render the Child only if/when the props change 
+
+useCallback useMemo
+--------------------
+useCallback(fn, [])
+when the array changes the function is returned
+
+useMemo(fn, [])
+when the array changes the function is returned and executed

@@ -7,11 +7,15 @@ function Counter() {
 
   return (
     <div className='counter-box'>
+      
       {/* could use setCount(count - 1) but...*/}
-      <button onClick={()=>setCount(count-1)}>Decrement</button>
+      <button onClick={() => setCount(count-1)}>Decrement</button>
+      
       <span>{count}</span>
+      
       {/* using prev is better because of 'closure' */}
-      <button onClick={()=>setCount(prev=>prev+1)}>Increment</button>
+      <button onClick={() => setCount(prev=>prev+1)}>Increment</button>
+      
     </div>
   )
 }
